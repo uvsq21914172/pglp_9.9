@@ -25,7 +25,6 @@ public class DrawingDaoBd extends Dao<Drawing> {
 
 
   Connection co;
-  Statement stt;
 
   /**
    * Constructeur
@@ -34,7 +33,6 @@ public class DrawingDaoBd extends Dao<Drawing> {
     String dbUrl = "jdbc:derby:D:BDTEST2;create=true";
     try {
       co = DriverManager.getConnection(dbUrl);
-      stt =co.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -114,6 +112,8 @@ public class DrawingDaoBd extends Dao<Drawing> {
             params.executeUpdate();
           }
           break;
+        default:
+          break;
       }
     }
 
@@ -191,6 +191,8 @@ public class DrawingDaoBd extends Dao<Drawing> {
               break;
             case 3:
               s = new Triangle(rs2.getInt("x"), rs2.getInt("y"), a, b, c);
+              break;
+            default:
               break;
           }
           drw.addShape(rs2.getString("name"), s);

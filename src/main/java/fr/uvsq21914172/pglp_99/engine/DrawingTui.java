@@ -13,7 +13,7 @@ public class DrawingTui {
   private boolean state = true;
   InputStream in = System.in;
   OutputStream out = System.out;
-  Scanner sc = new Scanner(in);
+  Scanner sc = new Scanner(in,"UTF-8");
   
   public InputStream getIn() {
     return in;
