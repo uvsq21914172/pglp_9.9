@@ -18,7 +18,12 @@ public class Circle extends AShape{
   }
   
   public String display() {
-    return "Circle(centre="+position.display()+",rayon="+rayon+")";
+    return "Circle(center="+position.display()+",rayon="+rayon+")";
+  }
+
+  @Override
+  public int type() {
+    return 0;
   }
   
 }

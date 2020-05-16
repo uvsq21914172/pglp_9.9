@@ -1,5 +1,6 @@
 package fr.uvsq21914172.pglp_99.shape;
 
+import java.util.ArrayList;
 import java.util.List;
 import fr.uvsq21914172.pglp_99.engine.Drawing;
 
@@ -7,6 +8,15 @@ public class Group implements IElement {
 
   List<String> elements;
   Drawing drawing;
+  int id;
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public boolean add(String element) {
     if (!elements.contains(element) && drawing.containsShape(element)) {
@@ -40,6 +50,15 @@ public class Group implements IElement {
       buf.append("\t" + drawing.getShape(elements.get(i)).display() + "\n");
     }
     return buf.toString();
+  }
+
+  public List<String> getShapes() {
+    return elements;
+  }
+
+  public Group(Drawing drawing) {
+    this.elements = new ArrayList<String>();
+    this.drawing = drawing;
   }
 
 }

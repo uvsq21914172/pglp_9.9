@@ -3,12 +3,15 @@ package fr.uvsq21914172.pglp_99.engine;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import fr.uvsq21914172.pglp_99.shape.*;
 
 public class Drawing implements IElement{
   
-  Map<String, AShape> shapes = new HashMap<String, AShape>();
-  Map<String, Group> groups = new HashMap<String, Group>();
+  private Map<String, AShape> shapes = new HashMap<String, AShape>();
+  private Map<String, Group> groups = new HashMap<String, Group>();
+  private String name;
 
   public boolean addShape(String symbol, AShape shape) {
     if(!shapes.containsKey(symbol) && !groups.containsKey(symbol)) {
@@ -54,10 +57,12 @@ public class Drawing implements IElement{
   }
 
   public String display() {
-    Iterator<AShape> it = shapes.values().iterator();
+    Iterator<Entry<String, AShape>> it = shapes.entrySet().iterator();
     StringBuffer buf = new StringBuffer();
+    Entry<String, AShape> ent;
     while(it.hasNext()) {
-      buf.append(it.next().display()+"\n");
+      ent = it.next();
+      buf.append(ent.getKey() +"="+ent.getValue().display()+"\n");
     }
     return buf.toString();
   }
@@ -68,6 +73,30 @@ public class Drawing implements IElement{
 
   public boolean containsShape(String element) {
     return shapes.containsKey(element);
+  }
+
+  public boolean containsGroup(String element) {
+    return groups.containsKey(element);
+  }
+
+  public Group getGroup(String element) {
+    return groups.get(element);
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Set<String> getGroups() {
+    return groups.keySet();
+  }
+
+  public Set<String> getShapes() {
+    return shapes.keySet();
   }
 
 }

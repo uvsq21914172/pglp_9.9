@@ -1,24 +1,29 @@
 package fr.uvsq21914172.pglp_99.shape;
 
-public class Square  extends AShape{
+public class Square extends AShape{
   
-  int rayon;
+  int width;
   
-  public Circle(int x, int y, int rayon) {
+  public Square(int x, int y, int width) {
     super(x,y);
-    this.rayon = rayon;
+    this.width = width;
   }
   
-  public void setRayon(int rayon) {
-    this.rayon = rayon;
+  public void setWidth(int width) {
+    this.width = width;
   }
   
-  public int getRayon() {
-    return rayon;
+  public int getWidth() {
+    return width;
   }
   
   public String display() {
-    return "Circle(centre="+position.display()+",rayon="+rayon+")";
+    return "Square(pos="+position.display()+",width="+width+")";
+  }
+
+  @Override
+  public int type() {
+    return 2;
   }
   
 }

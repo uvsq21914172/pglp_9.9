@@ -2,23 +2,38 @@ package fr.uvsq21914172.pglp_99.shape;
 
 public class Rectangle  extends AShape{
   
-  int rayon;
+  int width;
+  int length;
   
-  public Circle(int x, int y, int rayon) {
+  public Rectangle(int x, int y, int width, int length) {
     super(x,y);
-    this.rayon = rayon;
+    this.width = width;
+    this.length = length;
   }
   
-  public void setRayon(int rayon) {
-    this.rayon = rayon;
+  public void setWidth(int width) {
+    this.width = width;
   }
   
-  public int getRayon() {
-    return rayon;
+  public int getWidth() {
+    return width;
+  }
+  
+  public void setLength(int length) {
+    this.length = length;
+  }
+  
+  public int getLength() {
+    return length;
   }
   
   public String display() {
-    return "Circle(centre="+position.display()+",rayon="+rayon+")";
+    return "Rectangle(centre="+position.display()+",width="+width+",length="+length+")";
+  }
+
+  @Override
+  public int type() {
+    return 1;
   }
   
 }
